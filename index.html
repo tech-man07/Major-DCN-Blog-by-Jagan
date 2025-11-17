@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD5 Hash Value – Advanced Study</title>
+
+<style>
+    /* ===== COLOR THEME ===== */
+    body{
+        background: #0f0f0f;    /* Dark charcoal */
+        color: #e6c767;         /* Professional gold */
+        font-family: "Segoe UI", sans-serif;
+        line-height: 1.8;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* ===== HEADER & TITLE ===== */
+    header{
+        text-align: center;
+        padding: 60px 20px;
+        position: relative;
+        overflow: hidden;
+        animation: headerFade 1.5s ease-out;
+    }
+
+    h1{
+        font-size: 3.2rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 700;
+        animation: titleGlow 4s infinite ease-in-out;
+    }
+
+    @keyframes titleGlow{
+        0%{ text-shadow: 0 0 10px #e6c767; }
+        50%{ text-shadow: 0 0 35px #f8e48c; }
+        100%{ text-shadow: 0 0 10px #e6c767; }
+    }
+
+    @keyframes headerFade{
+        from { opacity: 0; transform: translateY(-30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== CONTENT SECTION ===== */
+    .section{
+        padding: 30px 40px;
+        max-width: 1100px;
+        margin: auto;
+        opacity: 0;
+        animation: fadeSlide 1.2s forwards ease;
+    }
+
+    @keyframes fadeSlide{
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2{
+        color: #f8e48c;
+        font-size: 2rem;
+        border-left: 5px solid #e6c767;
+        padding-left: 15px;
+    }
+
+    p{
+        font-size: 1.2rem;
+        margin-bottom: 18px;
+    }
+
+    /* ===== IMAGE STYLING ===== */
+    .img-box{
+        text-align: center;
+        margin: 25px 0;
+    }
+
+    .img-box img{
+        width: 80%;
+        border-radius: 12px;
+        transition: 0.4s;
+        filter: brightness(0.85);
+    }
+
+    .img-box img:hover{
+        transform: scale(1.04);
+        filter: brightness(1);
+    }
+
+    /* ===== CODE BLOCK ===== */
+    pre{
+        background: #1c1c1c;
+        padding: 15px;
+        border-radius: 10px;
+        overflow-x: auto;
+        font-size: 1rem;
+        color: #f4e7ba;
+        border-left: 4px solid #e6c767;
+        box-shadow: 0 0 10px #000;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>MD5 Hash Value</h1>
+    <p>Deep Technical Study with Working, Uses & Python Example</p>
+</header>
+
+<!-- ========== SECTION 1 ========== -->
+<div class="section">
+    <h2>What is MD5?</h2>
+    <p>
+        MD5 (Message Digest Algorithm 5) is a widely used cryptographic hash function that produces a 
+        128-bit digest represented as a 32-character hexadecimal number. Created by Ronald Rivest in 1991, 
+        MD5 was initially designed for security applications, digital signatures, and integrity verification.
+    </p>
+    <p>
+        Although MD5 is no longer secure against modern attacks, it is still used for file validation, 
+        checksums, and detection of accidental data corruption.
+    </p>
+
+    <div class="img-box">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1kJaABQKeMtbnr2DZu8367NRX3YDa6oO5QNLBqwRPyA&s=10" alt="MD5 Working Diagram">
+    </div>
+</div>
+
+<!-- ========== SECTION 2 ========== -->
+<div class="section">
+    <h2>Why Do We Need MD5?</h2>
+    <p>
+        MD5 is needed to ensure data integrity and detect accidental changes. It provides a digital 
+        fingerprint for any input message. If the hash value changes, the data has been modified.
+    </p>
+
+    <p>Common uses of MD5 include:</p>
+    <ul>
+        <li>File integrity checks after download</li>
+        <li>Detecting corruption during data transfer</li>
+        <li>Legacy password hashing</li>
+        <li>Validating configuration files and backups</li>
+        <li>Forensics and malware analysis</li>
+    </ul>
+<div class="img-box">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZj4w7QvCMZsnu9CWN899_kgh4c5s6rQl3nSrA2osnGyPGMdM-fWPA7c7KvBaNxkRBlIb9p7RWZM8xDV4EtddbjBnE5IyFk5ZTULpFqCG5rFvS-9ulymV9jJkUWIXMAAGhAXn7IsdIhRE/s1600/MD5--Hashing.png" 
+             alt="MD5 Use Cases">
+    </div>
+</div>
+
+<!-- ========== SECTION 3 ========== -->
+<div class="section">
+    <h2>Working of MD5 Algorithm</h2>
+    <p>
+        MD5 processes the input message in blocks of 512 bits. It divides each block into 16 sub-blocks 
+        of 32 bits. The algorithm uses four registers (A, B, C, D), each 32 bits long, and performs 
+        64 operations divided into four rounds.
+    </p>
+
+    <p>
+        During each round, MD5 applies logical functions such as AND, OR, XOR, NOT, and performs 
+        left circular bit rotations. After all rounds, the outputs are concatenated to form the final 
+        128-bit hash.
+    </p>
+
+    <div class="img-box">
+        <img src="https://cyberhoot.com/wp-content/uploads/2021/12/security-md5_hashing_desktop.jpeg" alt="MD5 Block Diagram">
+    </div>
+</div>
+
+<!-- ========== SECTION 4 – Python Code ========== -->
+<div class="section">
+    <h2>Python Code Example for MD5</h2>
+    <p>
+        Here is a simple Python program that generates an MD5 hash of user input:
+    </p>
+
+<pre>
+import hashlib
+
+text = input("Enter text: ")
+
+# Encode text to bytes
+encoded_text = text.encode()
+
+# Create MD5 hash object
+hash_value = hashlib.md5(encoded_text)
+
+print("MD5 Hash Value:", hash_value.hexdigest())
+</pre>
+</div>
+
+<!-- ========== SECTION 5 ========== -->
+<div class="section">
+    <h2>Applications of MD5</h2>
+    <p>MD5 is used in:</p>
+
+    <ul>
+        <li><strong>File Integrity Verification:</strong> Ensures software and documents are not corrupted.</li>
+        <li><strong>Digital Forensics:</strong> Used to verify forensic image copies.</li>
+        <li><strong>Version Control:</strong> Helps detect file changes.</li>
+        <li><strong>Data Deduplication:</strong> Identifies duplicate files using hash value.</li>
+    </ul>
+
+    <div class="img-box">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQpYgiIIxz8IzrFfg5HRUQdNF3mDfPR3G5rM67LXai0mblClTF3439XYA&s=10" 
+             alt="MD5 Applications">
+    </div>
+</div>
+
+<!-- ========== SECTION 6 ========== -->
+<div class="section">
+    <h2>Conclusion</h2>
+    <p>
+        MD5 is a foundational hashing algorithm that played a major role in the evolution of 
+        cybersecurity. Although no longer secure for cryptographic use, it still remains extremely 
+        valuable for data integrity verification, file checking, and general hashing tasks.
+    </p>
+</div>
+
+</body>
+</html>
